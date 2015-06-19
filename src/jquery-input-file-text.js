@@ -41,7 +41,8 @@
 
         // Update text when input file chosen
         this.change(function() {
-            text.val(self.val());
+            // Chrome puts C:\fakepath\... for file path
+            text.val(self.val().replace('C:\\fakepath\\', ''));
         });
  
         // Mark that this plugin has been applied to the input file element
