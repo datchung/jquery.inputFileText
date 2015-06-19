@@ -1,0 +1,25 @@
+{
+  "name": "jquery.inputFileText",
+  "version": "0.0.1",
+  "homepage": "https://github.com/datchung/jquery.inputFileText",
+  "authors": [
+    "datchung <innochi.contact@gmail.com>"
+  ],
+  "description": "JQuery plugin to change input file element's text",
+  "main": "doc/index.htm",
+  "keywords": [
+    "JQuery",
+    "plugin"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "qunit": "~1.18.0"
+  }
+}
