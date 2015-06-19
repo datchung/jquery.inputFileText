@@ -30,7 +30,7 @@
 
         // Insert text after button element
         var text = $(
-            '<input type="text" style="readonly:true; border:none; margin-left: 5px" />'
+            '<span style="margin-left: 5px"></span>'
             ).insertAfter(button);
 
         // Open input file dialog when button clicked
@@ -42,7 +42,7 @@
         // Update text when input file chosen
         this.change(function() {
             // Chrome puts C:\fakepath\... for file path
-            text.val(self.val().replace('C:\\fakepath\\', ''));
+            text.text(self.val().replace('C:\\fakepath\\', ''));
         });
  
         // Mark that this plugin has been applied to the input file element
