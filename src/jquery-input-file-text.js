@@ -5,17 +5,31 @@
  
     $.fn.inputFileText = function(userOptions) {
         var MARKER_ATTRIBUTE = 'data-inputFileText';
-
-        if(this.attr(MARKER_ATTRIBUTE) === 'true') {
-            // Plugin has already been applied to input file element
-            return this;
-        }
+        var DISPLAY_ATTRIBUTE = 'data-inputFileText-display';
 
         var options = $.extend({
             // Defaults
             text: 'Choose File',
             remove: false
         }, userOptions);
+
+        if(options.remove && this.attr(MARKER_ATTRIBUTE) === 'true') {
+            // Remove plugin from input file element
+            this.next('input[type=button]').remove();
+            this.next('span').remove();
+            return this.attr(MARKER_ATTRIBUTE, null)
+                .css({
+                    display: this.attr(DISPLAY_ATTRIBUTE)
+                })
+                .attr(DISPLAY_ATTRIBUTE, null);
+        }
+        else if(this.attr(MARKER_ATTRIBUTE) === 'true') {
+            // Plugin has already been applied to input file element
+            return this;
+        }
+
+        // Keep track of input file element's display setting
+        this.attr(DISPLAY_ATTRIBUTE, this.css('display'));
 
         // Hide input file element
         this.css({
