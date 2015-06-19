@@ -1,17 +1,13 @@
-/**
-
-*/
 (function($) {
  
     $.fn.inputFileText = function(userOptions) {
         var MARKER_ATTRIBUTE = 'data-inputFileText';
         var DISPLAY_ATTRIBUTE = 'data-inputFileText-display';
 
-        var options = $.extend({
-            // Defaults
-            text: 'Choose File',
-            remove: false
-        }, userOptions);
+        // Shortcut for plugin reference
+        var P = $.fn.inputFileText;
+
+        var options = P.getOptions(userOptions);
 
         if(options.remove && this.attr(MARKER_ATTRIBUTE) === 'true') {
             // Remove plugin from input file element
@@ -61,6 +57,14 @@
  
         // Mark that this plugin has been applied to the input file element
         return this.attr(MARKER_ATTRIBUTE, 'true');
+    };
+
+    $.fn.inputFileText.getOptions = function(userOptions) {
+        return $.extend({
+            // Defaults
+            text: 'Choose File',
+            remove: false
+        }, userOptions);
     };
  
 }(jQuery));
