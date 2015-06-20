@@ -30,3 +30,50 @@ QUnit.test("User provided", function(assert) {
         remove, 
         'Should return user\'s remove option when it is provided.');
 });
+
+
+QUnit.module('hasInputFileText', {
+    beforeEach: function() {
+        // Create input file element
+        this.inputFileElement = document.createElement('input');
+        this.inputFileElement.type = 'file';
+
+        // Set display style
+        this.display = 'inline';
+        $(this.inputFileElement).css({ display: this.display });
+    },
+    afterEach: function() {
+        delete this.inputFileElement;
+        delete this.display;
+    }
+});
+
+QUnit.test("Plugin has been applied to input file element", function(assert) {
+    var inputFileElement = this.inputFileElement;
+    var display = this.display;
+
+    // Apply plugin to element
+    inputFileElement = $(inputFileElement).inputFileText();
+
+    assert.equal(inputFileElement.attr($.fn.inputFileText.MARKER_ATTRIBUTE), 
+        'true', 
+        'Input file element should have data attribute to mark that the plugin has been applied.');
+
+    assert.equal(inputFileElement.attr($.fn.inputFileText.DISPLAY_ATTRIBUTE), 
+        display, 
+        'Input file element should have data attribute to keep track of original ' + 
+        'display setting after the plugin has been applied.');
+});
+
+QUnit.test("Plugin has not been applied to input file element", function(assert) {
+    var inputFileElement = $(this.inputFileElement);
+
+    assert.equal(inputFileElement.attr($.fn.inputFileText.MARKER_ATTRIBUTE), 
+        null, 
+        'Input file element should have not data attribute to mark that the plugin has been applied.');
+
+    assert.equal(inputFileElement.attr($.fn.inputFileText.DISPLAY_ATTRIBUTE), 
+        null, 
+        'Input file element should not have data attribute to keep track of original ' + 
+        'display setting after the plugin has been applied.');
+});

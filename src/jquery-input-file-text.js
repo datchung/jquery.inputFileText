@@ -1,31 +1,22 @@
 (function($) {
  
     $.fn.inputFileText = function(userOptions) {
-        var MARKER_ATTRIBUTE = 'data-inputFileText';
-        var DISPLAY_ATTRIBUTE = 'data-inputFileText-display';
-
         // Shortcut for plugin reference
         var P = $.fn.inputFileText;
 
         var options = P.getOptions(userOptions);
 
-        if(options.remove && this.attr(MARKER_ATTRIBUTE) === 'true') {
+        if(P.shouldRemoveInputFileText(this, options.remove)) {
             // Remove plugin from input file element
-            this.next('input[type=button]').remove();
-            this.next('span').remove();
-            return this.attr(MARKER_ATTRIBUTE, null)
-                .css({
-                    display: this.attr(DISPLAY_ATTRIBUTE)
-                })
-                .attr(DISPLAY_ATTRIBUTE, null);
+            return P.removeInputFileText(this);
         }
-        else if(this.attr(MARKER_ATTRIBUTE) === 'true') {
+        else if(P.hasInputFileText(this)) {
             // Plugin has already been applied to input file element
             return this;
         }
 
         // Keep track of input file element's display setting
-        this.attr(DISPLAY_ATTRIBUTE, this.css('display'));
+        this.attr(P.DISPLAY_ATTRIBUTE, this.css('display'));
 
         // Hide input file element
         this.css({
@@ -56,8 +47,11 @@
         });
  
         // Mark that this plugin has been applied to the input file element
-        return this.attr(MARKER_ATTRIBUTE, 'true');
+        return this.attr(P.MARKER_ATTRIBUTE, 'true');
     };
+
+    $.fn.inputFileText.MARKER_ATTRIBUTE = 'data-inputFileText';
+    $.fn.inputFileText.DISPLAY_ATTRIBUTE = 'data-inputFileText-display';
 
     $.fn.inputFileText.getOptions = function(userOptions) {
         return $.extend({
@@ -66,5 +60,25 @@
             remove: false
         }, userOptions);
     };
+
+    $.fn.inputFileText.hasInputFileText = function(inputFileElement) {
+        return inputFileElement.attr($.fn.inputFileText.MARKER_ATTRIBUTE) === 'true';
+    }
+
+    $.fn.inputFileText.shouldRemoveInputFileText = function(inputFileElement, remove) {
+        return remove && $.fn.inputFileText.hasInputFileText(inputFileElement);
+    }
+
+    $.fn.inputFileText.removeInputFileText = function(inputFileElement) {
+        var P = $.fn.inputFileText;
+
+        inputFileElement.next('input[type=button]').remove();
+        inputFileElement.next('span').remove();
+        return inputFileElement.attr(P.MARKER_ATTRIBUTE, null)
+            .css({
+                display: inputFileElement.attr(P.DISPLAY_ATTRIBUTE)
+            })
+            .attr(P.DISPLAY_ATTRIBUTE, null);
+    }
  
 }(jQuery));
