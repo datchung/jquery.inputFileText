@@ -17,4 +17,5 @@ JQuery plugin to change input file element's text.
         });
 
 **Result**
+
 ![Image of result](https://raw.githubusercontent.com/datchung/jquery.inputFileText/master/doc/images/pluginResult.PNG)
