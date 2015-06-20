@@ -61,14 +61,23 @@
         }, userOptions);
     };
 
+    /**
+    Check if plugin has already been applied to input file element.
+    */
     $.fn.inputFileText.hasInputFileText = function(inputFileElement) {
         return inputFileElement.attr($.fn.inputFileText.MARKER_ATTRIBUTE) === 'true';
-    }
+    };
 
+    /**
+    Check if plugin should be removed from input file element.
+    */
     $.fn.inputFileText.shouldRemoveInputFileText = function(inputFileElement, remove) {
         return remove && $.fn.inputFileText.hasInputFileText(inputFileElement);
-    }
+    };
 
+    /**
+    Remove plugin from input file element.
+    */
     $.fn.inputFileText.removeInputFileText = function(inputFileElement) {
         var P = $.fn.inputFileText;
 
@@ -79,6 +88,6 @@
                 display: inputFileElement.attr(P.DISPLAY_ATTRIBUTE)
             })
             .attr(P.DISPLAY_ATTRIBUTE, null);
-    }
+    };
  
 }(jQuery));
