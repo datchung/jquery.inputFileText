@@ -7,11 +7,9 @@
         var options = P.getOptions(userOptions);
 
         if(P.shouldRemoveInputFileText(this, options.remove)) {
-            // Remove plugin from input file element
             return P.removeInputFileText(this);
         }
         else if(P.hasInputFileText(this)) {
-            // Plugin has already been applied to input file element
             return this;
         }
 
