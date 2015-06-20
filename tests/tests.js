@@ -20,7 +20,7 @@
 
     QUnit.module('getOptions');
 
-    QUnit.test("Default", function(assert) {
+    QUnit.test('Default', function(assert) {
 
         var options = $.fn.inputFileText.getOptions();
 
@@ -33,7 +33,7 @@
             'Should return default remove option when no remove option is provided.');
     });
 
-    QUnit.test("User provided", function(assert) {
+    QUnit.test('User provided', function(assert) {
 
         var text = 'Select File';
         var remove = true;
@@ -54,7 +54,7 @@
     
     QUnit.module('hasInputFileText', getModuleHooks());
 
-    QUnit.test("Plugin has been applied to input file element", function(assert) {
+    QUnit.test('Plugin has been applied to input file element', function(assert) {
         var inputFileElement = this.inputFileElement;
         var display = this.display;
 
@@ -71,7 +71,7 @@
             'display setting after the plugin has been applied.');
     });
 
-    QUnit.test("Plugin has not been applied to input file element", function(assert) {
+    QUnit.test('Plugin has not been applied to input file element', function(assert) {
         var inputFileElement = $(this.inputFileElement);
 
         assert.equal(inputFileElement.attr($.fn.inputFileText.MARKER_ATTRIBUTE), 
@@ -87,7 +87,7 @@
 
     QUnit.module('shouldRemoveInputFileText', getModuleHooks());
 
-    QUnit.test("Plugin has been applied to input file element then un-apply", function(assert) {
+    QUnit.test('Plugin has been applied to input file element then un-apply', function(assert) {
         var inputFileElement = this.inputFileElement;
 
         // Apply plugin to element
@@ -99,7 +99,7 @@
             'Should remove plugin from input file element.');
     });
 
-    QUnit.test("Plugin has not been applied to input file element then un-apply", function(assert) {
+    QUnit.test('Plugin has not been applied to input file element then un-apply', function(assert) {
         var inputFileElement = this.inputFileElement;
 
         var remove = true;
