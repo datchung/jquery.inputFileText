@@ -10,7 +10,54 @@
 
     </head>
     <body>
-        <input type="file" id="choose-file">
+        <h1>Input File Text Demo</h1>
+        
+        <h2>Why do I need this plugin?</h2>
+        <p>
+            The appearance of an input file element is browser dependant.
+        </p>
+        <dl>
+            <dt>In Chrome</dt>
+            <dd><img src="images/chrome.png"/></dd>
+            <dt>In FireFox</dt>
+            <dd><img src="images/firefox.png"/></dd>
+            <dt>In Internet Explorer</dt>
+            <dd><img src="images/internetExplorer.png"/></dd>
+        </dl>
+        <p>
+            This plugin's purpose is to 'over-ride' the default appearance with our own.
+        </p>
+
+        <h2>How to use</h2>
+        <ol>
+            <li>
+                <a href="../src/jquery-input-file-text.js" target="_blank">
+                    Download this plugin.
+                </a>
+            </li>
+            <li>
+                Add this script after jquery.
+                <pre><code>
+                    &lt;script src='jquery-input-file-text.js'&gt;&lt;/script&gt;
+                </code></pre>
+            </li>
+            <li>
+                Create an input file element.
+                <pre><code>
+                    &lt;input type="file" id="choose-file" /&gt;
+                </code></pre>
+            </li>
+            <li>
+                Apply this plugin on the input file element.
+                <pre><code>
+                    $(document).ready(function() {
+                        $('#choose-file').inputFileText( { text: 'Select File' } );
+                    });
+                </code></pre>
+                <h3>Result</h3>
+                <input type="file" id="choose-file" />
+            </li>
+        </ol>
 
         <script>
             $(document).ready(function() {
