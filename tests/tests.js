@@ -127,14 +127,20 @@
     QUnit.module('apply/unapply inputFileText');
 
     QUnit.test('Apply plugin to input file element with default options', function(assert) {
-        expect(5);
+        expect(6);
         
         // Apply plugin to element
-        var inputFileElement = $('#' + INPUT_FILE_ID).inputFileText();
+        var inputFileElement = $('#' + INPUT_FILE_ID);
+        var originalDisplay = inputFileElement.css('display');
+        inputFileElement = inputFileElement.inputFileText();
 
         assert.equal(inputFileElement.attr($.fn.inputFileText.MARKER_ATTRIBUTE), 
             'true', 
             'Input file element should have data attribute after plugin has been applied.');
+
+        assert.equal(inputFileElement.attr($.fn.inputFileText.DISPLAY_ATTRIBUTE), 
+            originalDisplay, 
+            'Input file element should have display data attribute after plugin has been applied.');
 
         assert.equal(inputFileElement.css('display'), 
             'none', 
@@ -154,7 +160,7 @@
     });
 
     QUnit.test('Unapply plugin to input file element', function(assert) {
-        expect(4);
+        expect(5);
         
         // Remove plugin from element
         var inputFileElement = $('#' + INPUT_FILE_ID);
@@ -164,6 +170,10 @@
         assert.equal(inputFileElement.attr($.fn.inputFileText.MARKER_ATTRIBUTE),
             null, 
             'Input file element should not have data attribute after plugin has been removed.');
+
+        assert.equal(inputFileElement.attr($.fn.inputFileText.DISPLAY_ATTRIBUTE),
+            null, 
+            'Input file element should not have display data attribute after plugin has been removed.');
 
         assert.equal(inputFileElement.css('display'), 
             originalDisplay, 
