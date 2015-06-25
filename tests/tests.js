@@ -1,4 +1,9 @@
 (function() {
+    // ID of div containing test elements in html file
+    var TEST_DIV_ID = 'input-file-text-test';
+    // ID of input file element in html file
+    var INPUT_FILE_ID = 'input-file';
+
     var getModuleHooks = function(context) {
         return {
             beforeEach: function() {
@@ -106,5 +111,56 @@
         assert.equal($.fn.inputFileText.shouldRemoveInputFileText($(inputFileElement), remove), 
             false, 
             'Should not remove plugin from input file element.');
+    });
+
+
+    QUnit.module('apply/unapply inputFileText');
+
+    QUnit.test('Apply plugin to input file element with default options', function(assert) {
+        // Apply plugin to element
+        var inputFileElement = $('#' + INPUT_FILE_ID).inputFileText();
+
+        assert.equal(inputFileElement.attr($.fn.inputFileText.MARKER_ATTRIBUTE), 
+            'true', 
+            'Input file element should have data attribute after plugin has been applied.');
+
+        assert.equal(inputFileElement.css('display'), 
+            'none', 
+            'Input file element should not be visible.');
+
+        assert.equal(inputFileElement.next('input[type=button]').length, 
+            1, 
+            'File select button should be added after input file element.');
+
+        assert.equal(inputFileElement.next('input[type=button]').val(), 
+            'Choose File', 
+            'File select button should be have default value.');
+
+        assert.equal(inputFileElement.next('input[type=button]').next('span').length, 
+            1, 
+            'File text box should be added after input file element.');
+    });
+
+    QUnit.test('Unapply plugin to input file element', function(assert) {
+        // Remove plugin from element
+        var inputFileElement = $('#' + INPUT_FILE_ID);
+        var originalDisplay = inputFileElement.attr($.fn.inputFileText.DISPLAY_ATTRIBUTE);
+        inputFileElement = inputFileElement.inputFileText({ remove: true });
+
+        assert.equal(inputFileElement.attr($.fn.inputFileText.MARKER_ATTRIBUTE),
+            null, 
+            'Input file element should not have data attribute after plugin has been removed.');
+
+        assert.equal(inputFileElement.css('display'), 
+            originalDisplay, 
+            'Input file element should be visible.');
+
+        assert.equal(inputFileElement.next('input[type=button]').length, 
+            0 ,
+            'File select button should be removed after input file element.');
+
+        assert.equal(inputFileElement.next('span').length, 
+            0, 
+            'File text box should be removed after input file element.');
     });
 })();
