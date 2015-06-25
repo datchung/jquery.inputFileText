@@ -26,6 +26,7 @@
     QUnit.module('getOptions');
 
     QUnit.test('Default', function(assert) {
+        expect(2);
 
         var options = $.fn.inputFileText.getOptions();
 
@@ -39,6 +40,7 @@
     });
 
     QUnit.test('User provided', function(assert) {
+        expect(2);
 
         var text = 'Select File';
         var remove = true;
@@ -60,6 +62,8 @@
     QUnit.module('hasInputFileText', getModuleHooks());
 
     QUnit.test('Plugin has been applied to input file element', function(assert) {
+        expect(2);
+
         var inputFileElement = this.inputFileElement;
         var display = this.display;
 
@@ -77,6 +81,8 @@
     });
 
     QUnit.test('Plugin has not been applied to input file element', function(assert) {
+        expect(2);
+        
         var inputFileElement = $(this.inputFileElement);
 
         assert.equal(inputFileElement.attr($.fn.inputFileText.MARKER_ATTRIBUTE), 
@@ -93,6 +99,8 @@
     QUnit.module('shouldRemoveInputFileText', getModuleHooks());
 
     QUnit.test('Plugin has been applied to input file element then un-apply', function(assert) {
+        expect(1);
+        
         var inputFileElement = this.inputFileElement;
 
         // Apply plugin to element
@@ -105,6 +113,8 @@
     });
 
     QUnit.test('Plugin has not been applied to input file element then un-apply', function(assert) {
+        expect(1);
+        
         var inputFileElement = this.inputFileElement;
 
         var remove = true;
@@ -117,6 +127,8 @@
     QUnit.module('apply/unapply inputFileText');
 
     QUnit.test('Apply plugin to input file element with default options', function(assert) {
+        expect(5);
+        
         // Apply plugin to element
         var inputFileElement = $('#' + INPUT_FILE_ID).inputFileText();
 
@@ -142,6 +154,8 @@
     });
 
     QUnit.test('Unapply plugin to input file element', function(assert) {
+        expect(4);
+        
         // Remove plugin from element
         var inputFileElement = $('#' + INPUT_FILE_ID);
         var originalDisplay = inputFileElement.attr($.fn.inputFileText.DISPLAY_ATTRIBUTE);
