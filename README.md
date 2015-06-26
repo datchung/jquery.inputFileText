@@ -5,17 +5,17 @@ JQuery plugin to change input file element's text.
 1. Download this plugin from `src/jquery-input-file-text.js`.
 2. Add this script after JQuery.
 
-       <script src='jquery-input-file-text.js'></script>
+        <script src='jquery-input-file-text.js'></script>
 
 3. Create an input file element.
 
-       <input type="file" id="choose-file" />
+        <input type="file" id="choose-file" />
                 
 4. Apply this plugin on the input file element.
 
-       $(document).ready(function() {
-           $('#choose-file').inputFileText( { text: 'Select File' } );
-       });
+        $(document).ready(function() {
+            $('#choose-file').inputFileText( { text: 'Select File' } );
+        });
 
    **Result**
 
@@ -23,7 +23,7 @@ JQuery plugin to change input file element's text.
 
 5. To remove this plugin:
 
-       $('#choose-file').inputFileText( { remove: true } );
+        $('#choose-file').inputFileText( { remove: true } );
 
 
 ## Options
