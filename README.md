@@ -1,5 +1,5 @@
 # jquery.inputFileText
-JQuery plugin to change input file element's text.
+JQuery plugin to change input file element's text. It's also light - 3KB un-minified.
 
 ## Getting Started
 1. Download this plugin from `src/jquery-input-file-text.js`.
