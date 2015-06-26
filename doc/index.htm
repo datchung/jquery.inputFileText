@@ -8,6 +8,17 @@
         <script src='https://code.jquery.com/jquery-1.6.4.min.js'></script>
         <script src='../src/jquery-input-file-text.js'></script>
 
+        <style>
+            .button-class {
+                border: none;
+                padding: 10px 15px 10px 15px;
+                font-size: medium;
+            }
+
+            .text-class {
+                color: #777777;
+            }
+        </style>
     </head>
     <body>
         <h1>Input File Text Demo</h1>
@@ -51,7 +62,11 @@
                 Apply this plugin on the input file element.
                 <pre><code>
                     $(document).ready(function() {
-                        $('#choose-file').inputFileText( { text: 'Select File' } );
+                        $('#choose-file').inputFileText({
+                            text: 'Select File',
+                            buttonClass: 'button-class',
+                            textClass: 'text-class'
+                        });
                     });
                 </code></pre>
                 <h3>Result</h3>
@@ -61,7 +76,11 @@
 
         <script>
             $(document).ready(function() {
-                $('#choose-file').inputFileText( { text: 'Select File' } );
+                $('#choose-file').inputFileText({
+                    text: 'Select File',
+                    buttonClass: 'button-class',
+                    textClass: 'text-class'
+                });
             });
         </script>
     </body>
