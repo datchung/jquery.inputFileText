@@ -24,12 +24,12 @@
 
         // Insert button after input file element
         var button = $(
-            '<input type="button" value="' + options.text + '" />'
+            '<input type="button" value="' + options.text + '" class="' + options.buttonClass + '" />'
             ).insertAfter(this);
 
         // Insert text after button element
         var text = $(
-            '<span style="margin-left: 5px"></span>'
+            '<span style="margin-left: 5px" class="' + options.textClass + '"></span>'
             ).insertAfter(button);
 
         // Open input file dialog when button clicked
@@ -55,7 +55,9 @@
         return $.extend({
             // Defaults
             text: 'Choose File',
-            remove: false
+            remove: false,
+            buttonClass: '',
+            textClass: ''
         }, userOptions);
     };
 
