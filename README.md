@@ -31,6 +31,6 @@ The following options can be specified when applying this plugin to the input fi
 
     $('#choose-file').inputFileText({
       text: 'Select File', // The button will display this text
-      buttonCLass: 'buttonClassName', // The button's class
+      buttonClass: 'buttonClassName', // The button's class
       textClass: 'textClassName' // The text's class
     });
